@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\ProductResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Filament\Resources\ProductResource\RelationManagers\PhotosRelationManager;
 
 class ProductResource extends Resource
 {
@@ -25,7 +26,7 @@ class ProductResource extends Resource
 
 	protected static ?string $modelLabel = 'Products';
 
-	// protected static ?string $navigationGroup = 'Master Data';
+	protected static ?string $navigationGroup = 'Master Data';
 
 	public static function form(Form $form): Form
 	{
@@ -111,6 +112,7 @@ class ProductResource extends Resource
 	{
 		return [
 			//
+			PhotosRelationManager::class,
 		];
 	}
 
