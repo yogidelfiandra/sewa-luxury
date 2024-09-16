@@ -14,7 +14,7 @@
 <body>
 	<main class="max-w-[640px] mx-auto min-h-screen flex flex-col relative has-[#Bottom-nav]:pb-[144px]">
 		<div id="Top-navbar" class="flex items-center justify-between pt-5 px-5">
-			<a href="index.html" class="flex shrink-0">
+			<a href="{{ route('front.index') }}" class="flex shrink-0">
 				<img src="{{ asset('assets/images/logos/logo.svg') }}" alt="logo" />
 			</a>
 			<a href="#" class="w-11 h-11 flex shrink-0">
@@ -51,7 +51,8 @@
 				<div class="swiper-wrapper">
 
 					@forelse ($latest_products as $item_latest_product)
-					<a href="details.html" class="swiper-slide max-w-[150px] first-of-type:ml-5 last-of-type:mr-5">
+					<a href="{{ route('front.details', $item_latest_product->slug) }}"
+						class="swiper-slide max-w-[150px] first-of-type:ml-5 last-of-type:mr-5">
 						<div class="flex flex-col gap-3 bg-white">
 							<div class="h-[130px] flex shrink-0 items-center rounded-2xl overflow-hidden bg-[#F6F6F6]">
 								<div class="h-[70px] w-full flex shrink-0 justify-center">
@@ -85,7 +86,7 @@
 			<div class="flex flex-col gap-5">
 
 				@forelse ($random_product as $irp)
-				<a href="details.html" class="card">
+				<a href="{{ route('front.details', $irp->slug) }}" class="card">
 					<div class="flex items-center gap-3">
 						<div class="w-20 h-20 flex shrink-0 rounded-2xl overflow-hidden bg-[#F6F6F6] items-center">
 							<div class="w-full h-[50px] flex shrink-0 justify-center">
@@ -95,7 +96,8 @@
 						<div class="w-full flex flex-col gap-1">
 							<p class="font-semibold">{{ $irp->name }}</p>
 							<div class="flex items-center justify-between">
-								<p class="text-sm leading-[21px] text-[#6E6E70]">Rp {{ number_format($irp->price, 0, ',', '.') }}/day
+								<p class="text-sm leading-[21px] text-[#6E6E70]">
+									Rp {{ number_format($irp->price, 0, ',', '.') }}/day
 								</p>
 								<div class="flex items-center w-fit gap-[2px]">
 									<div class="w-4 h-4 flex shrink-0">
@@ -120,7 +122,7 @@
 			<div class="bg-white/50 backdrop-blur-sm absolute w-full h-full"></div>
 			<ul class="flex items-center gap-3 justify-evenly p-5 relative z-10">
 				<li>
-					<a href="index.html">
+					<a href="{{ route('front.index') }}">
 						<div
 							class="group flex flex-col items-center text-center gap-2 transition-all duration-300 hover:text-black">
 							<div class="w-6 h-6 flex shrink-0">
