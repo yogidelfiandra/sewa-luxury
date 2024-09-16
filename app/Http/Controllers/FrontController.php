@@ -15,4 +15,10 @@ class FrontController extends Controller
 		$random_product = Product::inRandomOrder()->take(6)->get();
 		return view('front.index', compact('categories', 'latest_products', 'random_product'));
 	}
+
+	public function category(Category $category)
+	{
+		session()->put('category_id', $category->id);
+		return view('front.brands', compact('category'));
+	}
 }
